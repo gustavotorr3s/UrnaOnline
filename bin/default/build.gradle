@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id 'war'
+    id 'org.gretty' version '2.2.0'
+}
+
+dependencies{
+    providedCompile group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.0-api', version: '1.0.1.Final'
+    providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+    providedCompile 'javax.servlet:jstl:1.2'
+    providedCompile 'mysql:mysql-connector-java:5.1.6'
+}
+
+// Nome do arquivo war
+war.baseName = 'UrnaOnline'
+
+// Definindo o diretório source do java
+sourceSets {
+        main {
+            java {
+                srcDir 'src'
+            }
+        }
+    }
+
+// Definindo o tomcat a ser usado no gretty
+gretty {
+  servletContainer = 'tomcat8'
+}
+
+// Repositórios
+repositories {
+   mavenCentral()
+    jcenter()
+}
